@@ -1,9 +1,23 @@
 let myLibrary = [];
 
+
+
 function Book(name, author, description) {
     this.name = name;
     this.author = author;
     this.description = description;
+}
+
+function addBook() {
+    const name = document.getElementById("name").value;
+    const author = document.getElementById("author").value;
+    const description = document.getElementById("description").value;
+
+    addBookToLibrary(name, author, description);
+
+    document.getElementById('name').value = "";
+    document.getElementById('author').value = "";
+    document.getElementById('description').value = "";
 }
 
 function addBookToLibrary(name, author, description) {
@@ -14,7 +28,7 @@ function addBookToLibrary(name, author, description) {
 function removeBookFromLibrary(id)
 {
     myLibrary.splice(id, 1);
-
+    
     const shownBooks = document.querySelectorAll('.card');
 
     shownBooks.forEach((el) => {
@@ -33,8 +47,6 @@ function removeBookFromLibrary(id)
 
 function createBookCard(book, index) {
 
-    console.log(book.name);
-
     let newBook = document.createElement('div');
     newBook.classList.add('card');
     newBook.setAttribute('data-book_index', index)
@@ -48,8 +60,17 @@ function createBookCard(book, index) {
     let newBook_description = document.createElement('p');
     newBook_description.textContent = book.description;
 
-    newBook.append(newBook_name, newBook_author, newBook_description);
-    document.querySelector('.container').appendChild(newBook);
+    let deleteBook = document.createElement('button');
+    deleteBook.textContent = "Delete";
+   
+    deleteBook.addEventListener('click', function handleClick(event) {
+    
+        removeBookFromLibrary(event.target.parentElement.getAttribute('data-book_index'));
+
+    });
+
+    newBook.append(newBook_name, newBook_author, newBook_description, deleteBook);
+    document.querySelector('.book-container').appendChild(newBook);
     
 }
 
@@ -60,7 +81,7 @@ function showNewBook() {
 
 function refreshBooks() {
 
-    removeAllChildNodes(document.querySelector('.container'));
+    removeAllChildNodes(document.querySelector('.book-container'));
 
     myLibrary.forEach((b, index) => {
         createBookCard(b, index);

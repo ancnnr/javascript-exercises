@@ -4,7 +4,8 @@ body {
     background-color: rgb(31, 31, 31);
 }
 
-.container {
+
+.book-container {
     
     padding: 40px;
     display: flex;
@@ -19,4 +20,5 @@ body {
     border-radius: 15px;
     padding: 25px;
     color: black;
+    width: clamp(300px, 15%, 400px);
 }

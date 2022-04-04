@@ -9,8 +9,25 @@
     <script src="main.js"></script>
 </head>
 <body>
-    <div class="container">
-        
+    <div class="site-container">
+        <!-- <form class="form-container"> -->
+            <div class="form-item">
+                <label for="name">Book Title: </label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div class="form-item">
+                <label for="author">Author: </label>
+                <input type="text" name="autor" id="author">
+            </div>
+            <div class="form-item">
+                <label for="description">Description: </label>
+                <input type="textarea" name="description" id="description" maxlength="300">
+            </div>
+
+            <button type="button"  onclick="addBook()">Add Book</button>
+        <!-- </form> -->
+        <div class="book-container"></div>
     </div>
+    
 </body>
 </html>
