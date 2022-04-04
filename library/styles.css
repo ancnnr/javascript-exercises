@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    color: white;
+    background-color: rgb(31, 31, 31);
+}
+
+.container {
+    
+    padding: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background-color: rgb(199, 199, 199);
+    border-radius: 15px;
+    padding: 25px;
+    color: black;
+}
