@@ -4,13 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="main.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Slab&display=swap" rel="stylesheet">
+    <title>Library</title>
+    <script src="main.js" defer></script>
 </head>
 <body>
-    <div class="site-container">
-        <!-- <form class="form-container"> -->
+    <div class="container">
+        <div class="site-container">
+            <button class="btn" type="button" id="toggle-form">Add New Book</button>
+            
+            <div class="book-container"></div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Made by <strong>Adam Conner</strong></p>
+    </div>
+
+    <div class="modal" id="add-book-modal">
+        <form class="new-book-form" id="new-book-form">
             <div class="form-item">
                 <label for="name">Book Title: </label>
                 <input type="text" name="name" id="name">
@@ -24,10 +39,10 @@
                 <input type="textarea" name="description" id="description" maxlength="300">
             </div>
 
-            <button type="button"  onclick="addBook()">Add Book</button>
-        <!-- </form> -->
-        <div class="book-container"></div>
+            <button class="btn-light-green" type="submit">Add Book</button>
+        </form>
     </div>
-    
+
+    <div class="overlay"></div>
 </body>
 </html>

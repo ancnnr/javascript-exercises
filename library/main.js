@@ -1,12 +1,98 @@
-let myLibrary = [];
+// Classes
 
+class Book { 
 
-
-function Book(name, author, description) {
-    this.name = name;
-    this.author = author;
-    this.description = description;
+    constructor(name="Unknown", author="Unknown", description="")
+    {
+        this.name = name;
+        this.author = author;
+        this.description = description;
+        this.read = false;
+    }
 }
+
+
+
+//Variables / UI Elements
+
+Book.prototype.toggleRead = function() {
+    this.read = !this.read;
+}
+
+const myLibrary = [];
+const toggleBtn = document.getElementById('toggle-form');
+const bookContainer = document.querySelector('.book-container');
+const addBookModal = document.getElementById('add-book-modal');
+const overlay = document.querySelector('.overlay');
+const addBookForm = document.getElementById('new-book-form');
+
+
+
+//Functions
+
+const toggleFormVisibility = (e) => {
+
+    addBookForm.reset();
+    addBookModal.classList.add('active');
+    overlay.classList.add('active');
+
+
+    // if(e.target.textContent == "Add New Book")
+    // {
+    //     e.target.textContent = "Hide Form";
+    // }
+
+    // else 
+    // {
+    //     e.target.textContent = "Add New Book";
+    // }
+    
+    // document.querySelectorAll('.form-item').forEach((fi) => {
+        
+    //     if(fi.style.display == "none")
+    //     {
+    //         fi.style.display = "flex";
+    //     }
+        
+    //     else 
+    //     {
+    //         fi.style.display = "none";
+    //     }
+    // });
+
+
+    // if(document.getElementById('add-book').style.display == "none")
+    // {
+        
+    //     document.getElementById('add-book').style.display = "block";
+    // }
+
+    // else
+    // {
+    //     document.getElementById('add-book').style.display = "none";
+    // }
+}
+
+const toggleReadBook = (event) => {
+
+    const id = event.target.parentElement.getAttribute('data-book_index');
+    myLibrary[id].toggleRead();
+    console.log(myLibrary[id].read);
+
+    if(myLibrary[id].read)
+    {
+        event.target.textContent = "Mark as unread";
+    }
+    else{
+        event.target.textContent = "Mark as read";
+    }
+
+};
+
+const deleteBookButton =  (event) => {
+    
+    removeBookFromLibrary(event.target.parentElement.getAttribute('data-book_index'));
+};
 
 function addBook() {
     const name = document.getElementById("name").value;
@@ -60,16 +146,20 @@ function createBookCard(book, index) {
     let newBook_description = document.createElement('p');
     newBook_description.textContent = book.description;
 
+    let toggleRead = document.createElement('button');
+    toggleRead.classList.add('btn');
+    toggleRead.textContent = "Mark as read";
+   
+    toggleRead.addEventListener('click', toggleReadBook);
+
+
     let deleteBook = document.createElement('button');
+    deleteBook.classList.add('btn');
     deleteBook.textContent = "Delete";
    
-    deleteBook.addEventListener('click', function handleClick(event) {
-    
-        removeBookFromLibrary(event.target.parentElement.getAttribute('data-book_index'));
+    deleteBook.addEventListener('click', deleteBookButton);
 
-    });
-
-    newBook.append(newBook_name, newBook_author, newBook_description, deleteBook);
+    newBook.append(newBook_name, newBook_author, newBook_description, toggleRead, deleteBook);
     document.querySelector('.book-container').appendChild(newBook);
     
 }
@@ -94,3 +184,34 @@ function removeAllChildNodes(parent) {
         parent.removeChild(parent.firstChild);
     }
 }
+
+
+
+
+//Action Listeners
+toggleBtn.addEventListener('click', toggleFormVisibility(e));
+
+
+
+
+
+
+
+//Local Storage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
