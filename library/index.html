@@ -12,34 +12,54 @@
     <script src="main.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <div class="site-container">
-            <button class="btn" type="button" id="toggle-form">Add New Book</button>
-            
-            <div class="book-container"></div>
+    <header class="header">
+        <div class="container">
+          <h1>library</h1>
         </div>
-    </div>
+      </header>
+
+
+        
+    <main class="main container">
+        <button class="btn btn-add" type="button" id="toggle-form">+ New Book</button>
+        
+        <div class="books-grid" id="book-container"></div>
+    </main>
+
     
-    <div class="footer">
-        <p>Made by <strong>Adam Conner</strong></p>
+    <footer class="footer">
+        <p>Remixed by <strong>Adam Conner</strong> from <a href="https://github.com/michalosman">michalosman</a></p>
     </div>
 
     <div class="modal" id="add-book-modal">
         <form class="new-book-form" id="new-book-form">
             <div class="form-item">
-                <label for="name">Book Title: </label>
-                <input type="text" name="name" id="name">
-            </div>
-            <div class="form-item">
-                <label for="author">Author: </label>
-                <input type="text" name="autor" id="author">
-            </div>
-            <div class="form-item">
-                <label for="description">Description: </label>
-                <input type="textarea" name="description" id="description" maxlength="300">
+                <input 
+                class="input" 
+                type="text" 
+                name="name" 
+                id="name"
+                placeholder="Book Title">
             </div>
 
-            <button class="btn-light-green" type="submit">Add Book</button>
+            <div class="form-item">
+                <input 
+                class="input" 
+                type="text" 
+                name="autor" 
+                id="author" 
+                placeholder="Author">
+            </div>
+            <div class="form-item">
+                <textarea 
+                class="input" 
+                name="description" 
+                id="description" 
+                maxlength="300" 
+                rows="5">Description</textarea>
+            </div>
+
+            <button class="btn btn-light-green" type="submit">Add Book</button>
         </form>
     </div>
 
